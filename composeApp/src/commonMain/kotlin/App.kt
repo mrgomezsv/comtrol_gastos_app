@@ -10,9 +10,13 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 @Composable
 fun App() {
     PreComposeApp {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Text("Bienvenidos")
-            Text("Curso Kotlin Multiplataforma con Compose")
+
+        val colors = getColorsTheme()
+        AppTheme {
+            Column(modifier = Modifier.fillMaxSize()) {
+                Text("Bienvenidos")
+                Text("Curso Kotlin Multiplataforma con Compose")
+            }
         }
     }
 }
