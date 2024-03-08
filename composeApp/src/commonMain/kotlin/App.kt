@@ -16,6 +16,8 @@ fun App() {
             Column(modifier = Modifier.fillMaxSize()) {
                 Text("Bienvenidos")
                 Text("Curso Kotlin Multiplataforma con Compose")
+                Text("Curso Kotlin Multiplataforma con Compose")
+                Text("Curso Kotlin Multiplataforma con Compose")
             }
         }
     }
