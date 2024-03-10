@@ -6,10 +6,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import model.Expense
+import model.ExpenseCategory
 import ui.AllExpensesHeader
+import ui.ExpensesItem
 import ui.ExpensesTotalHeader
 
-@Preview(showBackground = true)
+@Preview()
 @Composable
 fun ExpensesTotalHeaderPreview() {
     Box(modifier = Modifier.padding(16.dp)) {
@@ -22,5 +25,18 @@ fun ExpensesTotalHeaderPreview() {
 fun AllExpensesPreview() {
     Box(modifier = Modifier.padding(16.dp)) {
         AllExpensesHeader()
+    }
+}
+
+@Preview()
+@Composable
+fun ExpensesItemPreview() {
+    Box(modifier = Modifier.padding(8.dp)) {
+        ExpensesItem(expense = Expense(
+            id = 1L,
+            amount = 70.0,
+            category = ExpenseCategory.PARTY,
+            description = "Fin de semana"
+        ), onExpenseClick = {})
     }
 }
