@@ -77,13 +77,13 @@ object ExpenseManager {
 
     fun getCategories(): List<ExpenseCategory> {
         return listOf(
-        ExpenseCategory.CAFÉ,
-        ExpenseCategory.TRANSPORTE,
-        ExpenseCategory.CHUCHERIAS,
-        ExpenseCategory.SNACKS,
-        ExpenseCategory.DIVERSION,
-        ExpenseCategory.HOUSE,
-        ExpenseCategory.OTROS
+            ExpenseCategory.CAFÉ,
+            ExpenseCategory.TRANSPORTE,
+            ExpenseCategory.CHUCHERIAS,
+            ExpenseCategory.SNACKS,
+            ExpenseCategory.DIVERSION,
+            ExpenseCategory.HOUSE,
+            ExpenseCategory.OTROS
         )
     }
 }
