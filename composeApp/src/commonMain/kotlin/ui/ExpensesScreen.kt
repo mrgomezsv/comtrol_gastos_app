@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,12 +29,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import data.ExpenseManager
 import getColorsTheme
 import model.Expense
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ExpensesScreen() {
+fun ExpensesScreen(onExpenseClick: (expense: Expense) -> Unit) {
 
     val colors = getColorsTheme()
 
@@ -48,8 +50,11 @@ fun ExpensesScreen() {
                 AllExpensesHeader()
             }
         }
-        items(emptyList<String>()) {
+        //items(emptyList<String>()) {
             // Composables
+        //}
+        items(ExpenseManager.fakeExpenseList) { expense ->
+            ExpensesItem(expense = expense, onExpenseClick = onExpenseClick)
         }
     }
 }
@@ -57,9 +62,9 @@ fun ExpensesScreen() {
 @Composable
 fun ExpensesTotalHeader(total: Double) {
     Card(shape = RoundedCornerShape(30), backgroundColor = Color.Black, elevation = 5.dp) {
-        Column(
+        Box(
             modifier = Modifier.fillMaxWidth().height(130.dp).padding(16.dp),
-            verticalArrangement = Arrangement.Center
+            contentAlignment = Alignment.CenterStart
         ) {
             Text(
                 text = "$$total",
@@ -67,11 +72,7 @@ fun ExpensesTotalHeader(total: Double) {
                 fontWeight = FontWeight.ExtraBold,
                 color = Color.White
             )
-            Text(
-                modifier = Modifier.align(Alignment.End),
-                text = "USD",
-                color = Color.Gray
-            )
+            Text(modifier = Modifier.align(Alignment.CenterEnd), text = "USD", color = Color.Gray)
         }
     }
 }
