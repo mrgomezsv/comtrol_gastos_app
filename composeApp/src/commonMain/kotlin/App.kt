@@ -1,12 +1,6 @@
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
 import data.ExpenseManager
 import moe.tlaster.precompose.PreComposeApp
-import moe.tlaster.precompose.viewmodel.ViewModel
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import presentacion.ExpensesUiState
 import ui.ExpensesScreen
 
@@ -17,6 +11,11 @@ fun App() {
         val colors = getColorsTheme()
 
         AppTheme {
+            ExpensesScreen(
+                uiState = ExpensesUiState(
+                    expenses = ExpenseManager.fakeExpenseList,
+                    total = 1052.2
+                ), onExpenseClick = {})
 
         }
     }

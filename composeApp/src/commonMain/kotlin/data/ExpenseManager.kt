@@ -10,7 +10,7 @@ object ExpenseManager {
     var fakeExpenseList = mutableListOf( //datos fake de ejemplo
         Expense(
             id = currentId++,
-            amount = 70.0,
+            amount = 100.0,
             category = ExpenseCategory.CHUCHERIAS,
             description = "Semanal"
         ),
