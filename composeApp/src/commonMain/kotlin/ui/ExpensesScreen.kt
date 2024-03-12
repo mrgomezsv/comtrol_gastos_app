@@ -29,13 +29,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import data.ExpenseManager
 import getColorsTheme
 import model.Expense
+import presentacion.ExpensesUiState
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ExpensesScreen(onExpenseClick: (expense: Expense) -> Unit) {
+fun ExpensesScreen(uiState: ExpensesUiState, onExpenseClick: (expense: Expense) -> Unit) {
 
     val colors = getColorsTheme()
 
@@ -45,15 +45,12 @@ fun ExpensesScreen(onExpenseClick: (expense: Expense) -> Unit) {
     ) {
         stickyHeader {
             Column(modifier = Modifier.background(colors.backgroundColor)) {
-                // Composables
-                ExpensesTotalHeader(1023.3)
+                ExpensesTotalHeader(uiState.total)
                 AllExpensesHeader()
             }
         }
-        //items(emptyList<String>()) {
-            // Composables
-        //}
-        items(ExpenseManager.fakeExpenseList) { expense ->
+
+        items(uiState.expenses) { expense ->
             ExpensesItem(expense = expense, onExpenseClick = onExpenseClick)
         }
     }

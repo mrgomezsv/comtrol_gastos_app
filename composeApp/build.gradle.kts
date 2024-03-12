@@ -1,3 +1,4 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -10,11 +11,11 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "11"
+                jvmTarget = "17"
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -25,12 +26,13 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
+            implementation ("com.google.accompanist:accompanist-systemuicontroller:0.31.3-beta")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -39,13 +41,17 @@ kotlin {
             implementation(compose.material)
             api(compose.materialIconsExtended)
             implementation(compose.ui)
+            @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
 
             //Navigation PreCompose
             api("moe.tlaster:precompose:1.5.10")
             //Viewmodel
             api("moe.tlaster:precompose-viewmodel:1.5.10")
+
+        }
+        iosMain.dependencies {
+            //iOS dependencies
         }
     }
 }
@@ -76,8 +82,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlin {
+        jvmToolchain(17)
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
@@ -85,12 +94,8 @@ android {
     buildFeatures {
         compose = true
     }
-
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.8"
+        kotlinCompilerExtensionVersion = "1.5.6"
     }
-}
-dependencies {
-    implementation(project(":composeApp"))
 }
 
