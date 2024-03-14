@@ -44,6 +44,6 @@ fun ExpenseScreenPreview() {
     ExpensesScreen(
         uiState = ExpensesUiState(
             expenses = ExpenseManager.fakeExpenseList,
-            total = 1052.2
+            total = 2025.9
         ), onExpenseClick = {})
 }
