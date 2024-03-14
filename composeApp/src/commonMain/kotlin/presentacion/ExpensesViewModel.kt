@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import model.Expense
+import model.ExpenseCategory
 import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModelScope
 
@@ -60,5 +61,9 @@ data class ExpensesUiState(
 
      fun getExpenseWithID(id: Long): Expense {
          return alLExpense.first{ it.id ==id }
+     }
+
+     fun getCategories(): List<ExpenseCategory> {
+         return repo.getCategories()
      }
 }

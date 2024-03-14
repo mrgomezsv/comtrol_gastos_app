@@ -11,6 +11,7 @@ import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.navigation.path
+import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModel
 import presentacion.ExpensesViewModel
 import ui.ExpensesDetailScreen
@@ -41,7 +42,7 @@ fun Navitation(navigator: Navigator) {
             //val idFromPath = it
             val expenseToEditOrAdd = idFromPath?.let { id -> viewModel.getExpenseWithID(id) }
 
-            ExpensesDetailScreen(expenseToEdit = expenseToEditOrAdd) {expense ->
+            ExpensesDetailScreen(expenseToEdit = expenseToEditOrAdd, categoryList = viewModel.getCategories()) {expense ->
                 if(expenseToEditOrAdd == null) {
                     viewModel.addExpense(expense)
                 } else {
