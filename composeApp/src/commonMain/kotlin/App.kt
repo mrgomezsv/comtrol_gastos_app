@@ -33,7 +33,8 @@ fun App() {
             Scaffold(
                 modifier = Modifier.fillMaxSize(),
                 topBar = {
-                    TopAppBar(elevation = 0.dp,
+                    TopAppBar(
+                        elevation = 0.dp,
                         title = {
                             Text(
                                 text = titleTopBar,
@@ -42,28 +43,32 @@ fun App() {
                             )
                         },
                         navigationIcon = {
-                            if(isEditOrAddExpenses) {
+                            if (isEditOrAddExpenses) {
                                 IconButton(
                                     onClick = {
                                         navigator.popBackStack()
                                     }
                                 ) {
-                                    Icon(modifier = Modifier.padding(start = 16.dp),
+                                    Icon(
+                                        modifier = Modifier.padding(start = 16.dp),
                                         imageVector = Icons.Default.ArrowBack,
                                         tint = colors.textColor,
                                         contentDescription = "Flecha back icon"
                                     )
                                 }
                             } else {
-                                Icon(modifier = Modifier.padding(start = 16.dp),
+                                Icon(
+                                    modifier = Modifier.padding(start = 16.dp),
                                     imageVector = Icons.Default.Apps,
                                     tint = colors.textColor,
                                     contentDescription = "Dashboard icon"
                                 )
                             }
-                        })
-                },
-                backgroundColor = colors.backgroundColor) {
+                        },
+                        backgroundColor = colors.backgroundColor,
+                    )
+                }
+            ) {
 
             }
         }
@@ -74,8 +79,9 @@ fun App() {
 fun getTitleTopAppBar(navigator: Navigator): String {
     var titleTopBar = TItleTopBarTypes.DASHBOARD
 
-    val isOnAddExpenses = navigator.currentEntry.collectAsState(null).value?.route?.route.equals("/addExpenses/{id}")
-    if(isOnAddExpenses) {
+    val isOnAddExpenses =
+        navigator.currentEntry.collectAsState(null).value?.route?.route.equals("/addExpenses/{id}")
+    if (isOnAddExpenses) {
         titleTopBar = TItleTopBarTypes.ADD
     }
 
