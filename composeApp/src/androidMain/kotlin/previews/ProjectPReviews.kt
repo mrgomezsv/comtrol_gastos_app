@@ -3,12 +3,15 @@ package previews
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import data.ExpenseManager
 import presentacion.ExpensesUiState
 import ui.AllExpensesHeader
+import ui.ExpenseAmount
 import ui.ExpensesItem
 import ui.ExpensesScreen
 import ui.ExpensesTotalHeader
@@ -47,3 +50,10 @@ fun ExpenseScreenPreview() {
             total = 2025.9
         ), onExpenseClick = {})
 }
+
+//@OptIn(ExperimentalComposeUiApi::class)
+//@Preview(showBackground = true)
+//@Composable
+//fun ExpenseAmountPreview() {
+//    ExpenseAmount(priceContent = 12.0, onPriceChange = { }, LocalSoftwareKeyboardController)
+//}

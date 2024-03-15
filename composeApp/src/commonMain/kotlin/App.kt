@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import data.TItleTopBarTypes
+import data.TitleTopBarTypes
 import moe.tlaster.precompose.PreComposeApp
 import moe.tlaster.precompose.navigation.Navigator
 import moe.tlaster.precompose.navigation.path
@@ -33,7 +33,7 @@ fun App() {
         AppTheme {
             val navigator = rememberNavigator()
             val titleTopBar = getTitleTopAppBar(navigator)
-            val isEditOrAddExpenses = titleTopBar != TItleTopBarTypes.DASHBOARD.value
+            val isEditOrAddExpenses = titleTopBar != TitleTopBarTypes.DASHBOARD.value
 
             Scaffold(
                 modifier = Modifier.fillMaxSize(),
@@ -101,17 +101,17 @@ fun App() {
 
 @Composable
 fun getTitleTopAppBar(navigator: Navigator): String {
-    var titleTopBar = TItleTopBarTypes.DASHBOARD
+    var titleTopBar = TitleTopBarTypes.DASHBOARD
 
     val isOnAddExpenses =
         navigator.currentEntry.collectAsState(null).value?.route?.route.equals("/addExpenses/{id}?")
     if (isOnAddExpenses) {
-        titleTopBar = TItleTopBarTypes.ADD
+        titleTopBar = TitleTopBarTypes.ADD
     }
 
     val isOnEditExpenses = navigator.currentEntry.collectAsState(null).value?.path<Long>("id")
     isOnEditExpenses?.let {
-        titleTopBar = TItleTopBarTypes.EDIT
+        titleTopBar = TitleTopBarTypes.EDIT
     }
 
     return titleTopBar.value
