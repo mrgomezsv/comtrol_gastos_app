@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -40,7 +41,7 @@ fun ExpensesScreen(uiState: ExpensesUiState, onExpenseClick: (expense: Expense) 
     val colors = getColorsTheme()
 
     LazyColumn(
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+        modifier = Modifier.padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         stickyHeader {
@@ -52,6 +53,11 @@ fun ExpensesScreen(uiState: ExpensesUiState, onExpenseClick: (expense: Expense) 
 
         items(uiState.expenses) { expense ->
             ExpensesItem(expense = expense, onExpenseClick = onExpenseClick)
+            //Spacer(modifier = Modifier.height(8.dp)) // Espacio entre elementos
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(80.dp)) // Espacio al final
         }
     }
 }
